@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit_PAGE</h1>
+    <form action="{% url 'edit' student_object.pk %}" method='POST'> {% csrf_token %}
+        <input placeholder="{{student_object.name}}" name="name"/>
+        <br/>
+        <input placeholder="{{student_object.phone_num}}" name="phone_num"/>
+        <br/>
+        {% comment %} <label for='intro'>자기소개</label>
+        <br/>
+        <textarea id='intro' name='intro_text'>{{student_object.intro_text}}</textarea>
+        <br/> {% endcomment %}
+        <button type='submit'>수정하기</button>
+    </form>
+    <br/>
+    <a href="{% url 'student' student_object.pk %}">뒤로가기</a>
+    
+</body>
+</html>

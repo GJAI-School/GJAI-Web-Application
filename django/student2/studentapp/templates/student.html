@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{student_object.name}}학생정보</h1>
+    <p>
+        <h2> 이름 : {{student_object.name}}
+        <h2>휴대폰 전화번호 : {{student_object.phone_num}}</h2>
+        {% for post in student_object.post.all %}
+            <h4> 오늘의 한마디 : {{post.intro_text}}</h4>
+        {% endfor %}
+    </p>
+    {% if user.is_authenticated and student_object.pk == user.student.pk %}
+        <a href="{% url 'edit' student_object.pk %}">수정하기</a>
+    {% endif %}
+    <br/>
+    <a href="{% url 'detail' student_object.class_num %}">뒤로가기</a>
+</body>
+</html>

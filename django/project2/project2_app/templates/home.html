@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css", href="{% static 'home.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>글자수 세기</h1>
+    <form action="{% url result %}" method='POST'> {% csrf_token %}
+        <textarea id="content" name="content" placeholder="입력하세요." cols="50" rows="10" ></textarea>
+        <p><button type="submit">submit</button></p>
+    </form>
+</body>
+</html>

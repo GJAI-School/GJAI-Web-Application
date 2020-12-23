@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if state == True %}
+        <h1>ERROR</h1>
+        <p>
+            {{msg}}
+        </p>
+    {% else %}
+        <h1>회원가입</h1> 
+        <form action='{% url 'signin' %}' method='POST'> {% csrf_token %}
+            <label for='user_id'>아이디를 입력하세요</label>
+            <br/>
+            <input name='user_id'/>
+            <br/>
+            <label for='user_pw'>비밀번호를 입력하세요</label>
+            <br/>
+            <input name='user_pw'/>
+            <br/>
+            <label for='user_pw_check'>비밀번호를 한번더 입력하세요</label>
+            <br/>
+            <input name='user_pw_check'/>
+            <br/>
+            <label for='class_num'>반을 입력하세요</label>
+            <br/>
+            <input name='class_num'/>
+            <br/>
+            <label for='name'>이름을 입력하세요</label>
+            <br/>
+            <input name='name'/>
+            <br/>
+            <label for='phone_num'>휴대폰번호를 입력하세요</label>
+            <br/>
+            <input name='phone_num'/>
+            <br/>
+            <button type='submit'>등록하기</button>
+        </form>
+    {% endif %}
+    <a href='{% url 'login' %}'>뒤로가기</a>
+    
+</body>
+</html>

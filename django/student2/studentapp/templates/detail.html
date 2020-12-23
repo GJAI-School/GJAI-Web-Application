@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Detail</h1>
+    {{class_object.class_num}}
+    {% for student in class_object.student.all%}
+    <ul>
+        <li><a href="{% url 'student' student.class_num %}">{{student.name}}</a></li> 
+    </ul>
+    {% endfor %}
+    <br/>
+    {% comment %} <a href="{% url 'add' class_object.pk %}">학생등록</a> {% endcomment %}
+    <br/>
+    <a href="{% url 'home' %}">뒤로가기</a>
+    
+</body>
+</html>

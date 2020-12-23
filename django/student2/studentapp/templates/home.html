@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method='POST'>{% csrf_token %}
+            <h3>{{user.get_username}}님, 안녕하세요</h3>
+            <a href='{% url 'add' user.student_object.pk %}'>자기소개 글쓰러가기</a>
+
+            <h1>학생정보시스템</h1>
+            {% for class in class_object %}
+            <p>
+                <a href="{% url 'detail' class.pk %}">
+                    {{class.class_num}}
+                    {{class.teacher}}
+                </a>
+            </p>
+            {% endfor %}
+            <br>
+            </br>
+            <button type="submit">로그아웃></button>
+        </form>
+    {% else %}
+        <h1>학생정보시스템</h1>
+        <a href='{% url 'login' %}'>로그인</a>
+        <br/>
+        <a href='{% url 'signin' %}'>회원가입</a>
+    {% endif %}
+</body>
+</html>
